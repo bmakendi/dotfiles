@@ -7,6 +7,7 @@ return {
     { 'hrsh7th/cmp-nvim-lsp' },
     { 'L3MON4D3/LuaSnip' },
     { 'WhoIsSethDaniel/mason-tool-installer.nvim' },
+    { 'j-hui/fidget.nvim', opts = {} },
   },
   config = function()
     -- import mason
@@ -32,6 +33,7 @@ return {
     -- enable mason and configure icons
     mason.setup({
       ui = {
+        border = 'rounded',
         icons = {
           package_installed = '✓',
           package_pending = '➜',
@@ -117,22 +119,11 @@ return {
     vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous diagnostic' })
     vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnostic' })
 
-    -- Custom handlers to have border around hover window
-    local border = {
-      { '╭', 'FloatBorder' },
-      { '─', 'FloatBorder' },
-      { '╮', 'FloatBorder' },
-      { '│', 'FloatBorder' },
-      { '╯', 'FloatBorder' },
-      { '─', 'FloatBorder' },
-      { '╰', 'FloatBorder' },
-      { '│', 'FloatBorder' },
-    }
-
     local handlers = {
       ['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, {
-        border = border,
+        border = 'rounded',
       }),
+      ['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = 'rounded' }),
     }
 
     -- Callback executed when a server is attached to a buffer
@@ -141,7 +132,6 @@ return {
       vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { desc = 'Go to definition', buffer = buffer })
       vim.keymap.set('n', 'H', vim.lsp.buf.hover, { desc = 'Hover', buffer = buffer })
       vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, { desc = 'Go to implementation', buffer = buffer })
-      vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, { desc = 'Rename', buffer = buffer })
       vim.keymap.set('n', '<leader>wl', function()
         print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
       end, { desc = 'List workspace folders', buffer = buffer })

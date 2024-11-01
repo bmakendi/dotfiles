@@ -15,14 +15,14 @@ return {
         ts = true,
       },
     })
-    vim.keymap.set('x', '<leader>ef', function()
+    vim.keymap.set('x', '<leader>rf', function()
       refactoring.refactor('Extract Function')
     end)
-    vim.keymap.set('x', '<leader>eF', function()
+    vim.keymap.set('x', '<leader>rF', function()
       refactoring.refactor('Extract Function To File')
     end)
     -- Extract function supports only visual mode
-    vim.keymap.set('x', '<leader>ev', function()
+    vim.keymap.set('x', '<leader>rv', function()
       refactoring.refactor('Extract Variable')
     end)
     -- Extract variable supports only visual mode
@@ -35,10 +35,10 @@ return {
     end)
     -- Inline var supports both normal and visual mode
 
-    vim.keymap.set('n', '<leader>eb', function()
+    vim.keymap.set('n', '<leader>rb', function()
       refactoring.refactor('Extract Block')
     end)
-    vim.keymap.set('n', '<leader>eB', function()
+    vim.keymap.set('n', '<leader>rB', function()
       refactoring.refactor('Extract Block To File')
     end)
     -- Extract block supports only normal mode

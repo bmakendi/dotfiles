@@ -5,9 +5,6 @@ return {
     config = function()
       local notify = require('notify')
 
-      notify.setup({
-        background_colour = '#1e222a',
-      })
       local filtered_message = { 'No information available' }
 
       -- Override notify function to filter out messages
@@ -27,16 +24,6 @@ return {
         end
         return notify(message, level, merged_opts)
       end
-
-      -- Update colors to use catpuccino colors
-      vim.cmd([[
-        highlight NotifyINFOBorder guifg=#8aadf4
-        highlight NotifyINFOIcon guifg=#8aadf4
-        highlight NotifyINFOTitle guifg=#8aadf4
-        highlight NotifyWARNBorder guifg=#f5a97f
-        highlight NotifyWARNIcon guifg=#f5a97f
-        highlight NotifyWARNTitle guifg=#f5a97f
-      ]])
     end,
   },
 }
