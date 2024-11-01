@@ -20,6 +20,8 @@ function opts.init()
   vim.opt.smartindent = true -- Auto indent
   vim.opt.winbar = '' -- Disable winbar
   vim.opt.fillchars:append({ eob = ' ' }) -- remove the ~ from end of buffer
+  vim.opt.scrolloff = 8 -- Keep 8 lines above and below cursor when scrolling
+  vim.opt.cursorline = true -- Highlight current line
 end
 
 return opts

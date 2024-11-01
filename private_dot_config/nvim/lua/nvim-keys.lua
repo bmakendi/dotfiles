@@ -28,8 +28,6 @@ function keys.init()
   vim.keymap.set('n', '<C-k>', '<C-W>k', { desc = 'Go to upper window', silent = true })
 
   -- Tab Management
-  vim.keymap.set('n', '<leader>tt', '<cmd>tabnew<cr>', { desc = 'Open new tab', silent = true })
-  vim.keymap.set('n', '<leader>td', '<cmd>tabclose<cr>', { desc = 'Close current tab', silent = true })
   vim.keymap.set('n', '<S-h>', '<cmd>tabprevious<cr>', { desc = 'Go to previous tab', silent = true })
   vim.keymap.set('n', '<S-l>', '<cmd>tabnext<cr>', { desc = 'Go to next tab', silent = true })
 
